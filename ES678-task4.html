@@ -1,0 +1,14 @@
+<div>
+</div>
+<script>
+    let container = document.querySelector('div');
+
+    for (let i = 0; i < 4; i++) {
+        let btn = document.createElement('button');
+        btn.addEventListener('click', function () {
+            alert(i);
+        });
+        btn.textContent = i;
+        container.appendChild(btn);
+    }
+</script>
