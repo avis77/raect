@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<body>
+<div>BulbBulb Bulb</div>
+
+<script>
+
+    class LightBulb{
+        constructor (el,bultNumber){
+            //console.log(el);
+            this._el=el;
+            this._bultNumber = bultNumber;
+        }
+
+        on(){
+            this.splitBults(this._el,this._bultNumber,true)
+        }
+
+        off(){
+            this.splitBults(this._el,this._bultNumber,false)
+        }
+
+        splitBults(el,number,on){
+            let posision = el.textContent.indexOf("Bulb",number)
+            let p1 = el.textContent.substr(0,posision)
+            let p2 = el.textContent.substr(posision+4)
+            let colored = p1
+            if(on){
+                colored+="Bulb".fontcolor("yellow")+p2
+            }else{
+                colored+="Bulb"+p2
+            }
+            el.text=colored
+            console.log(colored)
+        }
+
+    }
+
+
+
+    let container = document.querySelector('div');
+
+    let parts = container.textContent.split("Bulb")
+    let i = 1;
+    for (p in parts){
+        const bulb = new LightBulb(document.querySelector('div'),i);
+        let btn = document.createElement('button');
+        btn.addEventListener('on '+i, function () {
+            bulb.on();
+        });
+        let btn2 = document.createElement('button');
+        btn.addEventListener('of '+i, function () {
+            bulb.off();
+        });
+        // bulb.splitBults(document.querySelector('div'),2)
+        container.appendChild(btn);
+        container.appendChild(btn2);
+        i++;
+    }
+
+</script>
+</body>
+</html>
