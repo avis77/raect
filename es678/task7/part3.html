@@ -1,0 +1,27 @@
+<button></button>
+<script>
+    class AutoBind {
+        constructor() {
+            this._bid = 0
+        }
+
+        incAndGet() {
+            return ++this._bid
+        }
+    }
+    class Counter extends AutoBind {
+        constructor(btn) {
+            super();
+            this.inc = this.inc.bind(this)
+            this.btn = btn;
+            this.btn.textContent = '0';
+            this.btn.addEventListener('click', this.inc);
+        }
+
+        inc() {
+            this.btn.textContent=super.incAndGet();
+        }
+    }
+
+    const c = new Counter(document.querySelector('button'));
+</script>
